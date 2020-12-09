@@ -1,0 +1,7 @@
+Kata 01 -> Sum the Largest Numbers
+Kata 02 -> Conditional Sum
+Kata 03 -> Number of Vowels
+Kata 04 -> Instructor with Longest Name
+Kata 05 -> Percent Encoded String
+Kata 06 -> Smart Parking
+Kata 07 -> Check Air Pollution
