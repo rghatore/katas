@@ -81,6 +81,36 @@ const mostPopular = (persons) => {
   return name;
 }
 
+// function which outputs a list of everyone and for each of them, the names of who they follow and who follows them
+const printAll = (persons) => {
+
+  const data = followedBy(persons);
+  const print = {};
+
+  Object.entries(data).forEach(([key, value]) => {
+    print[key] = {"name": value.name};
+    const following = [];
+    const followedBy = [];
+    // add names for following
+    value.follows.forEach(person => {
+      following.push(data[person].name)
+    });
+    // add names for followed by 
+    value.followedBy.forEach(person => {
+      followedBy.push(data[person].name)
+    });
+
+    print[key]["follows"] = following;
+    print[key]["followedBy"] = followedBy;
+
+  })
+
+  return print;
+}
+
+
 // test functions
 // console.log(biggestFollower(data));
-console.log(mostPopular(data));
+// console.log(mostPopular(data));
+console.log(printAll(data));
+
