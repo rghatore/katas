@@ -47,5 +47,40 @@ const biggestFollower = (persons) => {
   return name;
 }
 
+// helper function which adds followedBy data
+const followedBy = (persons) => {
+
+  Object.entries(persons).forEach(([key, value]) => {
+    value.follows.forEach(following => {
+      if (persons[following]["followedBy"]) {
+        persons[following].followedBy.push(key);
+      } else {
+        persons[following]["followedBy"] = [key];
+      }
+    })
+  });
+
+  return persons;
+}
+
+// function which returns the name of the most popular (most followed) individual
+const mostPopular = (persons) => {
+  // loop through object
+  // compare num of people followed By
+  const data = followedBy(persons);
+  let numFollowedBy = 0;
+  let name = "";
+
+  Object.values(data).forEach(person => {
+    if (person.followedBy.length > numFollowedBy) {
+      name = person.name;
+      numFollowedBy = person.followedBy.length;
+    }
+  })
+
+  return name;
+}
+
 // test functions
-console.log(biggestFollower(data));
+// console.log(biggestFollower(data));
+console.log(mostPopular(data));
